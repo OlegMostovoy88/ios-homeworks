@@ -26,8 +26,7 @@ final class PostViewController: UIViewController {
         let barButtItem = UIBarButtonItem(title: "Информация", style: .plain, target: self, action: #selector(buttonAction))
         navigationItem.rightBarButtonItem = barButtItem
         barButtItem.title = "Информация"
-//        barButtItem.modalPresentationStyle = .automatic
-//        navigationController?.pushViewController(barButtItem, animated: true)
+
         
     }
     @objc private func buttonAction() {

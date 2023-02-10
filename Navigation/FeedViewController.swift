@@ -20,7 +20,7 @@ final class FeedViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .placeholderText
         setupButton()
-//        makeBarItem()
+
     }
     
     private func setupButton() {
@@ -29,18 +29,7 @@ final class FeedViewController: UIViewController {
         nextPageButton.addTarget(self, action: #selector(tapActionTwo), for: .touchUpInside)
     }
     
-//    private func makeBarItem() {
-//        let barItem = UIBarButtonItem(title: "Дальше", style: .plain, target: self, action: #selector(buttonAction))
-//        navigationItem.rightBarButtonItem = barItem
-//    }
-    
-//    @objc private func tapAction() {
-//        let secondVC = ProfileViewController(textForLabel: "Что у вас нового?")
-//        secondVC.title = "Second VC"
-//
-//        navigationController?.pushViewController(secondVC, animated: true)
-//    }
-    
+
     @objc private func tapActionTwo() {
         let postVC = PostViewController()
         postVC.title = "PostViewController"
@@ -53,7 +42,6 @@ final class FeedViewController: UIViewController {
         let postVC = PostViewController()
         postVC.title = "Post VC"
         postVC.modalPresentationStyle = .fullScreen
-//        present(thirdVC, animated: true)
         navigationController?.pushViewController(postVC, animated: true)
     }
     @objc private func buttonAction() {
@@ -62,7 +50,5 @@ final class FeedViewController: UIViewController {
         postViewController.titlePost = post.title
         }
     
-    struct Post {
-        var title: String
-    }
+
 }

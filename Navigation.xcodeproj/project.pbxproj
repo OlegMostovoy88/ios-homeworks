@@ -17,6 +17,7 @@
 		AC37019A2994CE1B00FECEAD /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3701992994CE1B00FECEAD /* PostViewController.swift */; };
 		AC37019C2995898800FECEAD /* Data.docc in Sources */ = {isa = PBXBuildFile; fileRef = AC37019B2995898800FECEAD /* Data.docc */; };
 		AC37019E2995A35000FECEAD /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37019D2995A34F00FECEAD /* InfoViewController.swift */; };
+		AC3701A02996627100FECEAD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37019F2996627100FECEAD /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		AC3701992994CE1B00FECEAD /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		AC37019B2995898800FECEAD /* Data.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Data.docc; sourceTree = "<group>"; };
 		AC37019D2995A34F00FECEAD /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		AC37019F2996627100FECEAD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				AC3701932992E6EA00FECEAD /* ProfileViewController.swift */,
 				AC3701992994CE1B00FECEAD /* PostViewController.swift */,
 				AC37019D2995A34F00FECEAD /* InfoViewController.swift */,
+				AC37019F2996627100FECEAD /* Post.swift */,
 				AC37019B2995898800FECEAD /* Data.docc */,
 				AC3701842992E51400FECEAD /* Assets.xcassets */,
 				AC3701862992E51400FECEAD /* LaunchScreen.storyboard */,
@@ -155,6 +158,7 @@
 				AC37019C2995898800FECEAD /* Data.docc in Sources */,
 				AC37019829944B0C00FECEAD /* TabBarController.swift in Sources */,
 				AC37019A2994CE1B00FECEAD /* PostViewController.swift in Sources */,
+				AC3701A02996627100FECEAD /* Post.swift in Sources */,
 				AC37019E2995A35000FECEAD /* InfoViewController.swift in Sources */,
 				AC37017E2992E51100FECEAD /* SceneDelegate.swift in Sources */,
 			);
