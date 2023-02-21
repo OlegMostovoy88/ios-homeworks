@@ -11,7 +11,7 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .placeholderText
+        view.backgroundColor = #colorLiteral(red: 0.1312785149, green: 0.03987477347, blue: 0.3262543678, alpha: 1)
         setupButton()
         
     }
@@ -21,7 +21,11 @@ class InfoViewController: UIViewController {
         button.setTitle("Покинуть?", for: .normal)
         button.setTitleColor(.systemYellow, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
-        button.backgroundColor = .systemIndigo
+        button.backgroundColor = #colorLiteral(red: 0.1626194715, green: 0.04926132411, blue: 0.4024096727, alpha: 1)
+        button.layer.shadowColor = UIColor.systemYellow.cgColor
+        button.layer.shadowRadius = 4
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
         return button
     }()
     
