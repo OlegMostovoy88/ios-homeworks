@@ -22,7 +22,6 @@ final class PostViewController: UIViewController {
         }
     
     
-    
     private func makeBarItem() {
         let barButtItem = UIBarButtonItem(title: "Информация", style: .done, target: self, action: #selector(buttonAction))
         navigationItem.rightBarButtonItem = barButtItem
