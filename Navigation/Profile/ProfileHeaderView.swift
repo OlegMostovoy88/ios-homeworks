@@ -38,6 +38,7 @@ class ProfileHeaderView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Ожидание чего-то..."
+        label.contentMode = .scaleAspectFill
         label.textColor = .darkGray
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
@@ -55,7 +56,6 @@ class ProfileHeaderView: UIView {
         button.layer.cornerRadius = 16
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
-
         return button
     }()
         
@@ -70,6 +70,8 @@ class ProfileHeaderView: UIView {
         textField.layer.borderColor = UIColor.black.cgColor
         textField.font = .systemFont(ofSize: 15, weight: .regular)
         textField.textColor = .black
+        textField.indent(size: 10)
+    
         return textField
     }()
     override init(frame: CGRect) {
@@ -83,15 +85,14 @@ class ProfileHeaderView: UIView {
     }
 // добавление на экран
     func addSubview(){
-        addSubview(avatarImageView)
-        addSubview(fullNameLabel)
-        addSubview(statusLabel)
-        addSubview(statusTextField)
-        addSubview(setStatusButton)
+        [avatarImageView, fullNameLabel, statusLabel, statusTextField, setStatusButton].forEach(addSubview)
+
         }
         
     @objc private func statusButtonPressed() {
         statusLabel.text = statusTextField.text
+        print(statusLabel.text!)
+        print(statusLabel.intrinsicContentSize)
     }
         
 // установка констрейнтов для всех элементов
@@ -127,6 +128,6 @@ class ProfileHeaderView: UIView {
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
 }
-        
+
+

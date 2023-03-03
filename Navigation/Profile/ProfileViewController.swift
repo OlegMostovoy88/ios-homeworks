@@ -52,6 +52,4 @@ class ProfileViewController: UIViewController {
         setupProfileViewController()
         
     }
-    
-    
 }
