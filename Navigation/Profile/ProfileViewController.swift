@@ -7,49 +7,53 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController, UITableViewDelegate {
     
-    private let profileHeaderView = ProfileHeaderView()
+    private let model = Post.makePost()
     
-    private let newButton: UIButton = {
-        var button = UIButton(type: .system)
-        button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Новая кнопка", for: .normal)
-        button.setTitleColor(.systemYellow, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
-        button.backgroundColor = #colorLiteral(red: 0.1626194715, green: 0.04926132411, blue: 0.4024096727, alpha: 1)
-        button.layer.cornerRadius = 16
-        button.layer.shadowColor = UIColor.systemYellow.cgColor
-        button.layer.shadowRadius = 4
-        button.layer.shadowOpacity = 0.7
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        return button
-    }()
-
-    func setupProfileViewController() {
-        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
-            
-            newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            newButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            newButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            newButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
+    private lazy var tableView: UITableView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.dataSource = self
+        $0.delegate = self
+        $0.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier )
+        return $0
+    }(UITableView(frame: .zero, style: .grouped))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Мой профиль"
+        self.title = "Тот самый профиль"
         view.backgroundColor = .white
-        view.addSubview(profileHeaderView)
-        view.addSubview(newButton)
-        setupProfileViewController()
-        
+        layout()
     }
+    
+    private func layout() {
+            view.addSubview(tableView)
+            tableView.backgroundColor = .systemGray4
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
+}
+extension ProfileViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        model.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as! PostTableViewCell
+        cell.setupCell(post: model[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    internal func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return section == 0 ? ProfileHeaderView() : nil
+    }  
 }
