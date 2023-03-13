@@ -82,7 +82,7 @@ class PostTableViewCell: UITableViewCell {
         let inset: CGFloat = 16
         
         NSLayoutConstraint.activate([
-           
+            
             authorText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
             authorText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
             authorText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
@@ -99,7 +99,7 @@ class PostTableViewCell: UITableViewCell {
             likesText.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: inset),
             likesText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
             likesText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset),
-   
+            
             viewsText.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: inset),
             viewsText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
             viewsText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset)

@@ -27,8 +27,8 @@ final class ProfileViewController: UIViewController, UITableViewDelegate {
     }
     
     private func layout() {
-            view.addSubview(tableView)
-            tableView.backgroundColor = .systemGray4
+        view.addSubview(tableView)
+        tableView.backgroundColor = .systemGray4
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -55,5 +55,5 @@ extension ProfileViewController: UITableViewDataSource {
     
     internal func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return section == 0 ? ProfileHeaderView() : nil
-    }  
+    }
 }
