@@ -72,7 +72,7 @@ final class FeedViewController: UIViewController {
         stackView.setCustomSpacing(40, after: nextPageButton2)
     }
 
-    var post = Post(title: "Мой пост")
+//    var post = PostVC(title: "Мой пост")
     
    
     private func setupButton() {
@@ -99,7 +99,7 @@ final class FeedViewController: UIViewController {
     @objc private func buttonAction() {
             let postViewController = PostViewController()
             self.navigationController?.pushViewController(postViewController, animated: true)
-        postViewController.titlePost = post.title
+//        postViewController.titlePost = post.title
         }
     
 
