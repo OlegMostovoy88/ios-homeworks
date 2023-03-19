@@ -71,7 +71,7 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupProfileHeaderView()
-        propertiesHeader()
+        customizeCell()
     }
     
     required init?(coder: NSCoder) {
@@ -84,7 +84,7 @@ class ProfileHeaderView: UIView {
         print(statusLabel.intrinsicContentSize)
     }
     // свойства HeaderView
-    func propertiesHeader() {
+    private func customizeCell() {
         backgroundColor = .lightGray
         layer.cornerRadius = 16
         layer.borderWidth = 2
