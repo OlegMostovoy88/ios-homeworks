@@ -65,19 +65,15 @@ extension LogInViewController {
 }
 
 // расширение для показа navbar'a
-//extension PhotosViewController {
-//    func showNavigationBar() {
-//        self.navigationController?.setNavigationBarHidden(false, animated: true)
-//    }
-//}
-
-
+extension PhotosViewController {
+    func showNavigationBar() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+}
 
 extension UIView {
     static var identifier: String {
         String(describing: self)
     }
 }
-
-
 
