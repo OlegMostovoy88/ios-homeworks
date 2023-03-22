@@ -9,7 +9,7 @@ final class FeedViewController: UIViewController {
         stackView.backgroundColor = #colorLiteral(red: 0.1626194715, green: 0.04926132411, blue: 0.4024096727, alpha: 1)
         stackView.axis = .vertical
         stackView.layer.cornerRadius = 16
-        stackView.distribution = .fillEqually
+        stackView.distribution = .equalCentering
         stackView.spacing = 10
         return stackView
     }()
@@ -18,7 +18,7 @@ final class FeedViewController: UIViewController {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
         button.layer.cornerRadius = 16
         button.setTitle("Показать пост", for: .normal)
-        button.setTitleColor(.systemYellow, for: .normal)
+        button.setTitleColor(.systemYellow, for: .highlighted)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         button.backgroundColor = #colorLiteral(red: 0.1626194715, green: 0.04926132411, blue: 0.4024096727, alpha: 1)
         button.layer.shadowColor = UIColor.systemYellow.cgColor
@@ -34,7 +34,7 @@ final class FeedViewController: UIViewController {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
         button.layer.cornerRadius = 16
         button.setTitle("Показать пост", for: .normal)
-        button.setTitleColor(.systemYellow, for: .normal)
+        button.setTitleColor(.systemYellow, for: .highlighted)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         button.backgroundColor = #colorLiteral(red: 0.1626194715, green: 0.04926132411, blue: 0.4024096727, alpha: 1)
         button.layer.shadowColor = UIColor.systemYellow.cgColor

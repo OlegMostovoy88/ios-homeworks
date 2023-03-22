@@ -70,9 +70,9 @@ class PostTableViewCell: UITableViewCell {
     
     private func customizeCell() {
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 10
+        contentView.layer.cornerRadius = 6
         contentView.layer.borderWidth = 2
-        contentView.layer.borderColor = UIColor.purple.cgColor
+        contentView.layer.borderColor = UIColor.purple.withAlphaComponent(0.3).cgColor
     }
     private func layout() {
         [authorText, postImage, descriptionText, likesText, viewsText].forEach { contentView.addSubview($0) }
