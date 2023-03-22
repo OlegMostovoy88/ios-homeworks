@@ -11,11 +11,12 @@ final class ProfileViewController: UIViewController {
     
     private var model:[[Any]]  = [["Photos"], Post.makePost()]
 
-    
     private lazy var tableView: UITableView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.dataSource = self
         $0.delegate = self
+        $0.sectionFooterHeight = 0
+        
         $0.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier )
         $0.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier )
         return $0
@@ -40,6 +41,8 @@ final class ProfileViewController: UIViewController {
         ])
     }
 }
+
+
 extension ProfileViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

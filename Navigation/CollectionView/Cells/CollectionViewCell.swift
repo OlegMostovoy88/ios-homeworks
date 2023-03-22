@@ -25,6 +25,7 @@ final class CollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 6
         self.clipsToBounds = true
         
         NSLayoutConstraint.activate ([
