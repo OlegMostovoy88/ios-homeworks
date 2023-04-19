@@ -1,46 +1,33 @@
-//
-//  Photo.swift
-//  Navigation
-//
-//  Created by Олег Мостовой on 18.03.2023.
-//
+import UIKit
 
-import Foundation
-
-struct Photo {
-    let id: Int
-    let imageName: String
-}
-
-struct SectionPhoto {
-    let sectionName: String
-    var photos: [Photo]
-}
-
-struct Source {
+struct Photos {
     
-    static func makePhoto() -> [Photo] {
-        [
-            .init(id: 1, imageName: "1"),
-            .init(id: 1, imageName: "2"),
-            .init(id: 1, imageName: "3"),
-            .init(id: 1, imageName: "4"),
-            .init(id: 1, imageName: "5"),
-            .init(id: 1, imageName: "6"),
-            .init(id: 1, imageName: "7"),
-            .init(id: 1, imageName: "8"),
-            .init(id: 1, imageName: "9"),
-            .init(id: 1, imageName: "10"),
-            .init(id: 1, imageName: "11"),
-            .init(id: 1, imageName: "12"),
-            .init(id: 1, imageName: "13"),
-            .init(id: 1, imageName: "14"),
-            .init(id: 1, imageName: "15"),
-            .init(id: 1, imageName: "16"),
-            .init(id: 1, imageName: "17"),
-            .init(id: 1, imageName: "18"),
-            .init(id: 1, imageName: "19"),
-            .init(id: 1, imageName: "20"),
-        ]
+    var image: String
+    
+    static func setupImage() -> [Photos] {
+        var image = [Photos]()
+        
+        image.append(Photos(image: "1"))
+        image.append(Photos(image: "2"))
+        image.append(Photos(image: "3"))
+        image.append(Photos(image: "4"))
+        image.append(Photos(image: "5"))
+        image.append(Photos(image: "6"))
+        image.append(Photos(image: "7"))
+        image.append(Photos(image: "8"))
+        image.append(Photos(image: "9"))
+        image.append(Photos(image: "10"))
+        image.append(Photos(image: "11"))
+        image.append(Photos(image: "12"))
+        image.append(Photos(image: "13"))
+        image.append(Photos(image: "14"))
+        image.append(Photos(image: "15"))
+        image.append(Photos(image: "16"))
+        image.append(Photos(image: "17"))
+        image.append(Photos(image: "18"))
+        image.append(Photos(image: "19"))
+        image.append(Photos(image: "20"))
+        
+        return image
     }
 }
