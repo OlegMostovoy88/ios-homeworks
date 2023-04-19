@@ -1,14 +1,8 @@
-//
-//  ProfileHeaderView.swift
-//  Navigation
-//
-//  Created by Олег Мостовой on 12.02.2023.
-//
 import UIKit
 
 class ProfileHeaderView: UIView {
     
-    // Аватарка пользователя
+    // MARK: Аватарка пользователя
     let avatarImageView: UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = #imageLiteral(resourceName: "Аватарка2")
@@ -18,11 +12,13 @@ class ProfileHeaderView: UIView {
         $0.layer.cornerRadius = 50.0
         $0.layer.borderWidth = 3.0
         $0.layer.borderColor = UIColor.white.cgColor
+        $0.layer.shadowOpacity = 0.7
+        $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.masksToBounds = true
         return $0
     }(UIImageView())
     
-    // Имя пользователя
+    // MARK: Имя пользователя
     private let fullNameLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "Тот Cамый Найдёнов"
@@ -31,7 +27,7 @@ class ProfileHeaderView: UIView {
         return $0
     }(UILabel())
     
-    // Статус пользователя
+    // MARK: Статус пользователя
     lazy var statusLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "Ожидание чего-то..."
@@ -40,7 +36,7 @@ class ProfileHeaderView: UIView {
         return $0
     }(UILabel())
     
-    // Кнопка установки статуса пользователя
+    // MARK: Кнопка установки статуса пользователя
     private lazy var setStatusButton: UIButton = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setTitle("Показать статус", for: .normal)
@@ -54,7 +50,7 @@ class ProfileHeaderView: UIView {
         return $0
     }(UIButton(type: .system))
     
-    // Поле для ввода статуса пользователя
+    // MARK: Поле для ввода статуса пользователя
     let statusTextField: UITextField = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.placeholder = "Введите статус"
@@ -145,7 +141,7 @@ class ProfileHeaderView: UIView {
             }
         }
     }
-   
+    
     
     // MARK:  Анимация поддергивание
     private func shakeAnimationForStatusTextField() {
@@ -161,8 +157,10 @@ class ProfileHeaderView: UIView {
     
     @objc private func statusButtonPressed() {
         if statusTextField.text!.isEmpty {
+            statusTextField.backgroundColor = #colorLiteral(red: 0.9919111133, green: 0.9757937789, blue: 0.6754880548, alpha: 1)
             shakeAnimationForStatusTextField()
         } else {
+            statusTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             statusLabel.text = statusTextField.text
             statusTextField.text = ""
             print(statusLabel.text!)
@@ -183,17 +181,16 @@ class ProfileHeaderView: UIView {
     
     private func setupProfileHeaderView() {
         [avatarImageView, fullNameLabel, statusLabel, statusTextField, setStatusButton].forEach(addSubview)
-        backgroundColor = .lightGray
-        layer.cornerRadius = 6
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.purple.withAlphaComponent(0.3).cgColor
+        backgroundColor = #colorLiteral(red: 0.7742388844, green: 0.7601891756, blue: 1, alpha: 1)
+        layer.cornerRadius = 10
+        
     }
     
     private func setupConstraints() {
-        topConstraintImage = avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16)
-        leadingConstraintImage = avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16)
-        widthConstraintImage = avatarImageView.widthAnchor.constraint(equalToConstant: 100)
-        heightConstraintImage = avatarImageView.heightAnchor.constraint(equalToConstant: 100)
+        topConstraintImage = avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Metric.inset)
+        leadingConstraintImage = avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Metric.inset)
+        widthConstraintImage = avatarImageView.widthAnchor.constraint(equalToConstant: Metric.widthAvatar)
+        heightConstraintImage = avatarImageView.heightAnchor.constraint(equalToConstant: Metric.heightAvatar)
         
         NSLayoutConstraint.activate([
             topConstraintImage,
@@ -201,29 +198,46 @@ class ProfileHeaderView: UIView {
             widthConstraintImage,
             heightConstraintImage,
             
-            fullNameLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),
-            fullNameLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 130),
-            fullNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            fullNameLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: Metric.topAnchorNameLabel),
+            fullNameLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: Metric.leadingAnchorNameLabel),
+            fullNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metric.inset),
             
             
-            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 16),
+            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: Metric.inset),
             statusLabel.leadingAnchor.constraint(equalTo: fullNameLabel.leadingAnchor),
             statusLabel.trailingAnchor.constraint(equalTo: fullNameLabel.trailingAnchor),
             
             
-            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 8),
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: Metric.topAnchorTextField),
             statusTextField.leadingAnchor.constraint(equalTo: statusLabel.leadingAnchor),
             statusTextField.trailingAnchor.constraint(equalTo: statusLabel.trailingAnchor),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40),
+            statusTextField.heightAnchor.constraint(equalToConstant: Metric.heightTextField),
             
             
-            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
-            setStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            setStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            setStatusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: Metric.inset),
+            setStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Metric.inset),
+            setStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metric.inset),
+            setStatusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metric.bottomAnchorStatusButton),
+            setStatusButton.heightAnchor.constraint(equalToConstant: Metric.heightStatusButton),
         ])
     }
 }
-
-
+extension ProfileHeaderView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        endEditing(true)
+        return true
+    }
+}
+extension ProfileHeaderView {
+    enum Metric {
+        static let inset: CGFloat = 16
+        static let widthAvatar: CGFloat = 100
+        static let heightAvatar: CGFloat = 100
+        static let heightStatusButton: CGFloat = 50
+        static let heightTextField: CGFloat = 40
+        static let topAnchorNameLabel: CGFloat = 27
+        static let topAnchorTextField: CGFloat = 8
+        static let leadingAnchorNameLabel: CGFloat = 130
+        static let bottomAnchorStatusButton: CGFloat = 15
+    }
+}

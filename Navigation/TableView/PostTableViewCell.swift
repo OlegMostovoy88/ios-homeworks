@@ -1,108 +1,138 @@
-//
-//  PostTableViewCell.swift
-//  Navigation
-//
-//  Created by Олег Мостовой on 05.03.2023.
-//
-
 import UIKit
+
+protocol PostTableViewCellDelegate: AnyObject {
+    func didTapImage(indexPath: IndexPath)
+}
 
 class PostTableViewCell: UITableViewCell {
     
-    private let postImage: UIImageView = {
+    weak var delegate: PostTableViewCellDelegate?
+    
+    lazy var indexPathCell = IndexPath()
+    
+    private let contentWhiteView: UIView = {
+        $0.backgroundColor = .systemBackground
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.contentMode = .scaleAspectFit
-        $0.clipsToBounds = true
-        $0.layer.borderWidth = 0.5
-        $0.layer.borderColor = UIColor.systemGray.cgColor
-        $0.backgroundColor = .black
         return $0
-    }(UIImageView())
+    }(UIView())
     
     private let authorText: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.numberOfLines = 2
-        $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        $0.textColor = .black
+        $0.textAlignment = .left
+        $0.font = .systemFont(ofSize: 20, weight: .bold)
+        $0.textColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         return $0
     }(UILabel())
+    
+    lazy var postImageView: UIImageView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .black
+        $0.contentMode = .scaleAspectFit
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(postImageAction)))
+        return $0
+    }(UIImageView())
     
     private let descriptionText: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .systemBackground
         $0.numberOfLines = 0
-        $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        $0.textColor = .black
-        $0.textAlignment = .justified
+        $0.font = .systemFont(ofSize: 14, weight: .regular)
+        $0.textColor = #colorLiteral(red: 0.3143926263, green: 0.4061227441, blue: 1, alpha: 1)
         return $0
     }(UILabel())
     
-    private let likesText: UILabel = {
+    private lazy var likesText: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        $0.textColor = .black
-        $0.numberOfLines = 1
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
+        $0.textColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(likesIncrease)))
         return $0
     }(UILabel())
     
     private let viewsText: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        $0.numberOfLines = 0
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
         $0.textColor = .black
-        $0.numberOfLines = 1
         return $0
     }(UILabel())
+    
+    @objc func postImageAction(){
+        delegate?.didTapImage(indexPath: indexPathCell)
+    }
+    
+    @objc func likesIncrease(){
+        post[indexPathCell.row].likes += 1
+        likesText.text = "❤️ \(post[indexPathCell.row].likes)"
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
-        customizeCell()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func setupCell(post: Post) {
-        authorText.text = post.author
-        postImage.image = post.image
-        descriptionText.text = post.description
-        likesText.text = "Likes: \(post.likes)"
-        viewsText.text = "Views: \(post.views)"
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        authorText.text = ""
+        postImageView.image = nil
+        descriptionText.text = ""
+        likesText.text = ""
+        viewsText.text = ""
     }
     
-    private func customizeCell() {
-        contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 6
-        contentView.layer.borderWidth = 2
-        contentView.layer.borderColor = UIColor.purple.withAlphaComponent(0.3).cgColor
+    func setupCell(indexPath: IndexPath) {
+        indexPathCell = indexPath
+        authorText.text = post[indexPathCell.row].author
+        postImageView.image = post[indexPathCell.row].image
+        descriptionText.text = post[indexPathCell.row].description
+        likesText.text = "❤️ \(post[indexPathCell.row].likes)"
+        viewsText.text = "👁️ \(post[indexPathCell.row].views)"
+        viewsText.textColor = #colorLiteral(red: 0.4387462437, green: 0.1898157895, blue: 0.8523948789, alpha: 1)
     }
+    
     private func layout() {
-        [authorText, postImage, descriptionText, likesText, viewsText].forEach { contentView.addSubview($0) }
-        
-        contentView.layer.borderWidth = 0
-        let screenWidth = UIScreen.main.bounds.width
-        let inset: CGFloat = 16
+        contentView.addSubview(authorText)
+        contentView.addSubview(postImageView)
+        contentView.addSubview(descriptionText)
+        contentView.addSubview(likesText)
+        contentView.addSubview(viewsText)
         
         NSLayoutConstraint.activate([
             
-            authorText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
-            authorText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
-            authorText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
+            authorText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Metric.inset),
+            authorText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.inset),
+            authorText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.inset),
             
-            postImage.topAnchor.constraint(equalTo: authorText.bottomAnchor, constant: inset),
-            postImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            postImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            postImage.heightAnchor.constraint(equalToConstant: screenWidth),
+            postImageView.topAnchor.constraint(equalTo: authorText.bottomAnchor, constant: Metric.inset),
+            postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            postImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             
-            descriptionText.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: inset),
-            descriptionText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
-            descriptionText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
+            descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: Metric.inset),
+            descriptionText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.inset),
+            descriptionText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.inset),
             
-            likesText.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: inset),
-            likesText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
-            likesText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset),
+            likesText.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: Metric.top),
+            likesText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.inset),
+            likesText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Metric.inset),
             
-            viewsText.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: inset),
-            viewsText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
-            viewsText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset)
+            viewsText.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: Metric.top),
+            viewsText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.inset),
+            viewsText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Metric.inset),
         ])
+    }
+}
+
+extension PostTableViewCell {
+    enum Metric {
+        static let inset: CGFloat = 16
+        static let top: CGFloat = 10
     }
 }
