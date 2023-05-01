@@ -18,14 +18,13 @@
 		AC37019A2994CE1B00FECEAD /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3701992994CE1B00FECEAD /* PostViewController.swift */; };
 		AC37019E2995A35000FECEAD /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37019D2995A34F00FECEAD /* InfoViewController.swift */; };
 		AC3701A02996627100FECEAD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC37019F2996627100FECEAD /* Post.swift */; };
-		AC3A180229E9F68F00453DB4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3A180129E9F68F00453DB4 /* Launch Screen.storyboard */; };
 		AC6823FB29B41C2700E633E1 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6823FA29B41C2700E633E1 /* PostTableViewCell.swift */; };
+		AC97752E29FAD4610073B7A9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC97752D29FAD4610073B7A9 /* Launch Screen.storyboard */; };
 		ACDE331029C3519D0088CC83 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE330F29C3519D0088CC83 /* PhotosTableViewCell.swift */; };
 		ACDE331329C353C10088CC83 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE331229C353C10088CC83 /* PhotosViewController.swift */; };
 		ACDE331629C35F6E0088CC83 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE331529C35F6E0088CC83 /* CollectionViewCell.swift */; };
 		ACDE331829C5DC040088CC83 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE331729C5DC040088CC83 /* Photo.swift */; };
-		ACF6374529EC2805000EC4B9 /* Assets — копия.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACF6374429EC2805000EC4B9 /* Assets — копия.xcassets */; };
-		ACF6374E29EFFCB4000EC4B9 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF6374D29EFFCB4000EC4B9 /* NotificationsViewController.swift */; };
+		ACF6374529EC2805000EC4B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACF6374429EC2805000EC4B9 /* Assets.xcassets */; };
 		ACF8F5F629E9A3C100992063 /* ViewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF8F5F529E9A3C100992063 /* ViewPostViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,14 +42,13 @@
 		AC3701992994CE1B00FECEAD /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		AC37019D2995A34F00FECEAD /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		AC37019F2996627100FECEAD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		AC3A180129E9F68F00453DB4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AC6823FA29B41C2700E633E1 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		AC97752D29FAD4610073B7A9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		ACDE330F29C3519D0088CC83 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		ACDE331229C353C10088CC83 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		ACDE331529C35F6E0088CC83 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		ACDE331729C5DC040088CC83 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		ACF6374429EC2805000EC4B9 /* Assets — копия.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets — копия.xcassets"; sourceTree = "<group>"; };
-		ACF6374D29EFFCB4000EC4B9 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		ACF6374429EC2805000EC4B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACF8F5F529E9A3C100992063 /* ViewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,11 +133,10 @@
 				ACDE331129C3524D0088CC83 /* CollectionView */,
 				AC6823F929B41BD300E633E1 /* TableView */,
 				AC24A0A429987E7E00884B89 /* Profile */,
-				ACF6374829EFF9E8000EC4B9 /* NotificationsViewController */,
 				AC319ECD29E5FC9300D78926 /* Extension */,
 				AC319ECF29E6006B00D78926 /* Models */,
-				ACF6374429EC2805000EC4B9 /* Assets — копия.xcassets */,
-				AC3A180129E9F68F00453DB4 /* Launch Screen.storyboard */,
+				ACF6374429EC2805000EC4B9 /* Assets.xcassets */,
+				AC97752D29FAD4610073B7A9 /* Launch Screen.storyboard */,
 				AC3701892992E51400FECEAD /* Info.plist */,
 			);
 			path = Navigation;
@@ -171,14 +168,6 @@
 				ACDE331529C35F6E0088CC83 /* CollectionViewCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		ACF6374829EFF9E8000EC4B9 /* NotificationsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ACF6374D29EFFCB4000EC4B9 /* NotificationsViewController.swift */,
-			);
-			path = NotificationsViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,8 +228,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACF6374529EC2805000EC4B9 /* Assets — копия.xcassets in Resources */,
-				AC3A180229E9F68F00453DB4 /* Launch Screen.storyboard in Resources */,
+				AC97752E29FAD4610073B7A9 /* Launch Screen.storyboard in Resources */,
+				ACF6374529EC2805000EC4B9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +253,6 @@
 				AC23E7DD29AFDC15002298E4 /* LogInViewController.swift in Sources */,
 				ACF8F5F629E9A3C100992063 /* ViewPostViewController.swift in Sources */,
 				ACDE331029C3519D0088CC83 /* PhotosTableViewCell.swift in Sources */,
-				ACF6374E29EFFCB4000EC4B9 /* NotificationsViewController.swift in Sources */,
 				AC23E7E229B13EBD002298E4 /* Extensions.swift in Sources */,
 				ACDE331329C353C10088CC83 /* PhotosViewController.swift in Sources */,
 				AC37017E2992E51100FECEAD /* SceneDelegate.swift in Sources */,
